@@ -11,6 +11,7 @@ use SylveK\LaravelCrafter\Traits\DatabaseCraftTrait;
 use SylveK\LaravelCrafter\Traits\FormRequestCraftTrait;
 use SylveK\LaravelCrafter\Traits\RoutesCraftTrait;
 use SylveK\LaravelCrafter\Traits\LangCraftTrait;
+use SylveK\LaravelCrafter\Traits\ObserverCraftTrait;
 
 use File;
 use Str;
@@ -24,6 +25,7 @@ class CrafterCommand extends Command
     use ViewsCraftTrait;
     use RoutesCraftTrait;
     use LangCraftTrait;
+    use ObserverCraftTrait;
 
     // -- The name and signature of the console command.
     protected $signature = 'craft:module
@@ -63,6 +65,12 @@ class CrafterCommand extends Command
             'namespace' => 'App\Http\Requests',
             'name'      => null,
             'stub'      => __DIR__ .'/../../stubs/model_form_request.stub',
+            'template'  => '',
+        ],
+        'observer'    => [
+            'namespace' => 'App\Observers',
+            'name'      => null,
+            'stub'      => __DIR__ .'/../../stubs/observer.stub',
             'template'  => '',
         ],
         'routes'    => [
@@ -157,8 +165,10 @@ class CrafterCommand extends Command
         // -- compile database files (migration, factory, seeder)
         $this -> compileDatabaseTemplates();
 
+        // -- compile observer class
+        $this -> compileObserverTemplate();
+
         // $this -> makeEvents();
-        // $this -> makeRequests();
 
         $this->info('Module "'. $this -> getModelName() .'"" crafted!');
     }
