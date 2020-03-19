@@ -1,0 +1,15 @@
+<div class="box-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group @if ($errors->has('name')) has-error @endif">
+                <label class="control-label">
+                    {{ trans('__ROUTE_CONTROLLER_NAME.model.name') }}
+                </label>
+                {{ html()->text('name')->class('form-control input-lg') }}
+                @if ( $errors->has('name') )
+                    <p class="help-block">{{ $errors->first('name') }}</p>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use __MODEL_NAMESPACE\__MODEL_NAME;
+use Carbon\Carbon;
+
+class __CONTROLLER_NAMETableSeeder extends Seeder
+{
+    // -- Run the database seeds.
+    public function run()
+    {
+		factory(__MODEL_NAMESPACE\__MODEL_NAME::class, 15) -> create();
+    }
+}

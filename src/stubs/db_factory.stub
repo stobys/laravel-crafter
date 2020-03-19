@@ -1,0 +1,12 @@
+<?php
+
+use __MODEL_NAMESPACE\__MODEL_NAME;
+use Faker\Generator as Faker;
+
+// -- __MODEL_NAME Model Factory
+
+$factory -> define(__MODEL_NAME::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});

@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class Create__CONTROLLER_NAMETable extends Migration
+{
+    // -- Run the migrations.
+    public function up()
+    {
+        Schema::create('__DB_TABLE', function (Blueprint $table) {
+            $table -> bigIncrements('id');
+
+            $table -> string('name') -> nullable();
+
+            $table -> dateTime('created_at') -> nullable();
+            $table -> dateTime('updated_at') -> nullable() -> useCurrent();
+            $table -> dateTime('deleted_at') -> nullable();
+        });
+    }
+
+    // -- Reverse the migrations.
+    public function down()
+    {
+        Schema::dropIfExists('__DB_TABLE');
+    }
+}

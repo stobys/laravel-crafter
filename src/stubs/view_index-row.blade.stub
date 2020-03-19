@@ -1,0 +1,38 @@
+<tr id="__ROUTE_CONTROLLER_NAME-row-{{ $model->id }}">
+    <td>
+        {{ $model->id }}
+    </td>
+    <td>
+        {{ $model->name }}
+    </td>
+    <td class="text-center">
+            @if( $model -> viewable() )
+            <a href="{{ route('__ROUTE_CONTROLLER_NAME-show', [$model->id]) }}" class="btn btn-sm btn-adient tip" title="{{ trans('app.model.preview') }}"
+               data-toggle="tooltip" data-placement="top">
+                <i class="fa fa-fw fa-file"></i>
+            </a>
+            @endif
+
+            @if ( $model -> editable() )
+                <a href="{{ route('__ROUTE_CONTROLLER_NAME-edit', [$model->id]) }}" class="btn btn-sm btn-adient tip" title="{{ trans('app.model.edit') }}"
+                   data-toggle="tooltip" data-placement="top">
+                    <i class="fa fa-fw fa-edit"></i>
+                </a>
+            @endif
+
+            @if ( $model -> deletable() )
+                <a href="{{ route('__ROUTE_CONTROLLER_NAME-delete', [$model->id]) }}" class="btn btn-sm btn-danger tip" title="{{ trans('app.model.delete') }}"
+                   data-toggle="tooltip" data-placement="top">
+                    <i class="fa fa-fw fa-trash"></i>
+                </a>
+            @endif
+
+            @if ( $model -> restorable() )
+                <a href="{{ route('__ROUTE_CONTROLLER_NAME-restore', [$model->id]) }}" class="btn btn-sm btn-warning tip" title="{{ trans('app.model.restore') }}"
+                   data-toggle="tooltip" data-placement="top">
+                    <i class="fa fa-fw fa-trash"></i>
+                </a>
+            @endif
+
+    </td>
+</tr>

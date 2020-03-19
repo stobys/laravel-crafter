@@ -1,0 +1,35 @@
+{{ html()->form()->open() }}
+<div class="card card-warning @if ( ! session('filters.__MODEL_NAMEFiltered') ) collapsed-card @endif">
+    <div class="card-header">
+        @include('forms._form_filter_box_header', ['module' => '__ROUTE_CONTROLLER_NAME'])
+    </div><!-- /filter.card-header -->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    {!! html()->label(trans('__ROUTE_CONTROLLER_NAME.model.name'))->for('name') !!}
+
+                    <div class="input-group bg-light mb-4">
+                        {{ html() -> text('name', session('filters.__MODEL_NAME.name'))
+                                -> placeholder( trans('__ROUTE_CONTROLLER_NAME.placeholder.name') )
+                                -> class('form-control')
+                         }}
+
+                        <div class="input-group-append clickable" data-js-action="clearInputGroupField">
+                            <div class="input-group-text">
+                                <i class="fa fa-times"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /filter.card-body -->
+
+    <div class="card-footer text-right">
+        @include('forms._form_filter_box_footer', ['module' => '__ROUTE_CONTROLLER_NAME'])
+    </div><!-- /filter.card-body -->
+</div>
+{{ html()->form()->close() }}

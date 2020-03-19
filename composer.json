@@ -1,0 +1,39 @@
+{
+    "name": "stobys/laravel-crafter",
+    "description": "Convinient way to generate all files for new model (model, controller, views, routes, migration, seeder, etc)",
+    "keywords": [
+        "stobys",
+        "laravel-crafter"
+    ],
+    "homepage": "https://github.com/stobys/laravel-crafter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name"  : "SylveK",
+            "email" : "s.tobys@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "illuminate/support": "5.7.*",
+        "phpunit/phpunit": "^7.0",
+        "mockery/mockery": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "SylveK\\LaravelCrafter\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SylveK\\LaravelCrafter\\LaravelCrafterServiceProvider"
+            ]
+        }
+    }
+}

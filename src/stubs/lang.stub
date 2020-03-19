@@ -1,0 +1,41 @@
+<?php
+
+return [
+
+    'label'  => [
+        '__ROUTE_CONTROLLER_NAME'  => '__CONTROLLER_NAME',
+        '__ROUTE_MODEL_NAME'   => '__MODEL_NAME',
+
+        'new-model' 	=> 'Create __MODEL_NAME',
+        'name'      	=> 'Name',
+        'trash'			=> 'Trash',
+        'module-filter'	=> '__CONTROLLER_NAME Filter',
+        'breadcrumb-index'	=> 'List',
+        'breadcrumb-trash'	=> 'Trash',
+        'breadcrumb-create'	=> 'Create',
+        'breadcrumb-edit'	=> 'Edit',
+        'breadcrumb-show'	=> 'Preview',
+    ],
+
+    'form'  => [
+        'model-preview-title'     => '__MODEL_NAME Preview',
+        'model-create-title'      => '__MODEL_NAME Creation Form',
+        'model-edit-title'        => '__MODEL_NAME Edit Form',
+    ],
+
+    'placeholder'  => [
+        'id'            => 'ID',
+        'name'          => 'Name',
+        'created_at'    => 'Created At',
+    ],
+
+    'model'  => [
+        'id'   			=> 'ID',
+        'name'          => 'Name',
+        'created_at'    => 'Created At',
+
+        'delete-confirmation' => '__MODEL_NAME deleted successfully',
+        'restore-confirmation' => '__MODEL_NAME restored successfully',
+    ],
+
+];

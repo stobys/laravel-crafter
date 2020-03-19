@@ -1,2 +1,10 @@
-# laravel-crafter
-Laravel Crafter can easily create resource items like controller, model, factory, migration, seeder, lang file, form request, routes file and views.
+# Convinient way to craft all files for new model (model, controller, views, routes, migration, seeder, etc)
+
+
+## Installation
+
+```bash
+composer require stobys/laravel-crafter
+```
+
+## How To Use It

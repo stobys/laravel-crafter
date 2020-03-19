@@ -1,0 +1,118 @@
+<?php
+
+namespace __CONTROLLER_NAMESPACE;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests\__MODEL_NAMEFormRequest;
+
+use __MODEL_NAMESPACE\__MODEL_NAME;
+use __MODEL_NAMESPACE\NullModel;
+
+use Validator;
+
+class __CONTROLLER_NAMEController extends Controller
+{
+    // -- List specified resource from storage.
+    public function index()
+    {
+        self::checkAccess(__FUNCTION__);
+
+        $models = __MODEL_NAME::orderBy('name', 'asc') -> filter() -> paginate(session()->get('itemsPerIndexPage', $this -> paginate_size));
+
+        return view('__VIEWS_DIR.index', compact('models'));
+    }
+
+    // -- Display a listing of the trashed resource.
+    public function trash()
+    {
+        self::checkAccess(__FUNCTION__);
+
+        $models = __MODEL_NAME::orderBy('name', 'asc') -> onlyTrashed() -> filter() -> paginate(session()->get('itemsPerIndexPage', $this -> paginate_size));
+
+        return view('__VIEWS_DIR.index', compact('models'));
+    }
+
+    // -- Show the specified resource from storage.
+    public function show(__MODEL_NAME $model)
+    {
+        self::checkAccess(__FUNCTION__);
+
+        return view('__VIEWS_DIR.show', compact('model'));
+    }
+
+    // -- Remove the specified resource from storage.
+    public function delete(__MODEL_NAME $model)
+    {
+        self::checkAccess(__FUNCTION__);
+
+        if ($model -> delete()) {
+            // flash('model-delete-confirmation', trans('__VIEWS_DIR.model.delete-confirmation'));
+        }
+
+        return redirect() -> back();
+    }
+
+    // -- Restore the specified resource from storage.
+    public function restore(__MODEL_NAME $model)
+    {
+        self::checkAccess(__FUNCTION__);
+
+        if ($model -> restore()) {
+            // flash('model-restore-confirmation', trans('__VIEWS_DIR.model.restore-confirmation'));
+        }
+
+        return redirect()->route('__VIEWS_DIR-trash');
+    }
+
+    // -- Edit the specified resource from storage.
+    public function edit(__MODEL_NAME $model)
+    {
+        self::checkAccess(__FUNCTION__);
+
+        return view('__VIEWS_DIR.edit', compact('model'));
+    }
+
+    /**
+     * -- UPDATE the specified resource
+     *
+     * @param  Request  $request
+     * @param  User  $model
+     * @return Response
+     */
+    public function update(__MODEL_NAMEFormRequest $request, __MODEL_NAME $model)
+    {
+        self::checkAccess(__FUNCTION__);
+
+        if ($model -> fill($request->input()) -> save()) {
+            return redirect() -> route('__VIEWS_DIR-index');
+        }
+
+        return redirect() -> back() -> withInput() -> withErrors($model->getErrors());
+    }
+
+    // -- Show form to create the specified resource.
+    public function create()
+    {
+        self::checkAccess(__FUNCTION__);
+
+        $model = new NullModel;
+
+        return view('__VIEWS_DIR.create', compact('model'));
+    }
+
+    // -- STORE the specified resource
+    public function store(__MODEL_NAMEFormRequest $request)
+    {
+        self::checkAccess(__FUNCTION__);
+
+        $model = __MODEL_NAME::create($request->input());
+
+        if ($model -> hasErrors()) {
+            return redirect()->back()->withInput()->withErrors($model->getErrors());
+        }
+
+        return redirect()->route('__VIEWS_DIR-index');
+    }
+
+}

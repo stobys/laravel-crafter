@@ -1,0 +1,53 @@
+@extends('skel.master')
+
+@section('content-header')
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>
+                    {{ trans('__ROUTE_CONTROLLER_NAME.form.model-create-title') }}
+                </h1>
+            </div>
+
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('home') }}">
+                                <i class="fa fa-fw fa-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item tip" title="{{ trans('__ROUTE_CONTROLLER_NAME.label.__ROUTE_CONTROLLER_NAME') }}">
+                            <a href="{{ route('__ROUTE_CONTROLLER_NAME-index') }}">
+                                @lang('__ROUTE_CONTROLLER_NAME.label.__ROUTE_CONTROLLER_NAME')
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            @lang('__ROUTE_CONTROLLER_NAME.label.breadcrumb-create')
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+
+@endsection
+
+@section('content')
+    <div class="container-fluid">
+        {{ html()->form('POST', route('__ROUTE_CONTROLLER_NAME-store'))->open() }}
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        @include('__VIEWS_DIR._form_create_edit')
+                    </div><!-- /.card-body -->
+                    <div class="card-footer text-center">
+                        @include('forms._form_buttons_footer', ['module' => '__ROUTE_CONTROLLER_NAME', 'buttons' => ['submit', 'cancel']])
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ html()->form()->close() }}
+    </div>
+@endsection

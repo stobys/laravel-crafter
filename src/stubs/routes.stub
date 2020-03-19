@@ -1,0 +1,32 @@
+<?php
+
+// -- ROUTE PATTERN
+Route::pattern('__ROUTE_MODEL_NAME', '[0-9]+');
+
+// -- ROUTE MODEL BINDING
+Route::bind('__ROUTE_MODEL_NAME', function($value)
+{
+    return __MODEL_NAMESPACE\__MODEL_NAME::withTrashed()
+        -> where('id', $value)
+        -> first();
+});
+
+// -- ROUTING GROUP
+Route::group(['prefix' => '__ROUTE_CONTROLLER_NAME'], function() {
+
+    Route::get('/',  '__CONTROLLER_NAMEController@index') -> name('__ROUTE_CONTROLLER_NAME-index');
+    Route::post('/', '__CONTROLLER_NAMEController@index') -> name('__ROUTE_CONTROLLER_NAME-index-filter');
+
+    Route::get('/trash',  '__CONTROLLER_NAMEController@trash') -> name('__ROUTE_CONTROLLER_NAME-trash');
+    Route::post('/trash', '__CONTROLLER_NAMEController@trash') -> name('__ROUTE_CONTROLLER_NAME-trash-filter');
+
+    Route::get('/{__ROUTE_MODEL_NAME}', '__CONTROLLER_NAMEController@show') -> name('__ROUTE_CONTROLLER_NAME-show');
+    Route::get('/create', '__CONTROLLER_NAMEController@create') -> name('__ROUTE_CONTROLLER_NAME-create');
+    Route::post('/store', '__CONTROLLER_NAMEController@store') -> name('__ROUTE_CONTROLLER_NAME-store');
+
+    Route::get('/{__ROUTE_MODEL_NAME}/edit', '__CONTROLLER_NAMEController@edit') -> name('__ROUTE_CONTROLLER_NAME-edit');
+    Route::patch('/{__ROUTE_MODEL_NAME}', '__CONTROLLER_NAMEController@update') -> name('__ROUTE_CONTROLLER_NAME-update');
+    Route::get('/{__ROUTE_MODEL_NAME}/delete',  '__CONTROLLER_NAMEController@delete') -> name('__ROUTE_CONTROLLER_NAME-delete');
+    Route::get('/{__ROUTE_MODEL_NAME}/restore', '__CONTROLLER_NAMEController@restore') -> name('__ROUTE_CONTROLLER_NAME-restore');
+
+});

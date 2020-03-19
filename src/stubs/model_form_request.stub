@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class __MODEL_NAMEFormRequest extends FormRequest
+{
+    // -- Determine if the user is authorized to make this request.
+    public function authorize()
+    {
+        return auth()->check();
+    }
+
+    // -- Get the validation rules that apply to the request.
+    public function rules()
+    {
+        return [
+            'name' => 'required|unique:__DB_TABLE,name,'. ($this->route('__ROUTE_MODEL_NAME') ? $this->route('__ROUTE_MODEL_NAME')->id : ''),
+        ];
+    }
+}

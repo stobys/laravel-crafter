@@ -1,0 +1,99 @@
+@extends('skel.master')
+
+@section('content-header')
+
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                @if( controller('__ROUTE_CONTROLLER_NAME@trash') )
+                    <a href="{{ URL::route('__ROUTE_CONTROLLER_NAME-index') }}" class="btn btn-sm btn-labeled btn-info">
+                        <span class="btn-label">
+                            <i class="fa fa-fw fa-list"></i>
+                        </span>
+                        @lang('__ROUTE_CONTROLLER_NAME.label.__ROUTE_CONTROLLER_NAME')
+                    </a>
+                @else
+                    <a href="{{ URL::route('__ROUTE_CONTROLLER_NAME-create') }}" class="btn btn-sm btn-labeled btn-info">
+                        <span class="btn-label">
+                            <i class="fa fa-fw fa-plus"></i>
+                        </span>
+                        @lang('__ROUTE_CONTROLLER_NAME.label.new-model')
+                    </a>
+
+                    <a href="{{ URL::route('__ROUTE_CONTROLLER_NAME-trash') }}" class="btn btn-sm btn-labeled btn-info">
+                        <span class="btn-label">
+                            <i class="fa fa-fw fa-trash"></i>
+                        </span>
+                        @lang('__ROUTE_CONTROLLER_NAME.label.trash')
+                    </a>
+                @endif
+            </div>
+
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('home') }}">
+                                <i class="fa fa-fw fa-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('__ROUTE_CONTROLLER_NAME-index') }}">
+                                @lang('__ROUTE_CONTROLLER_NAME.label.__ROUTE_CONTROLLER_NAME')
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            @if( controller('__ROUTE_CONTROLLER_NAME@trash') )
+                                @lang('__ROUTE_CONTROLLER_NAME.label.breadcrumb-trash')
+                            @else
+                                @lang('__ROUTE_CONTROLLER_NAME.label.breadcrumb-index')
+                            @endif
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+@endsection
+
+@section('content')
+
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @include('__VIEWS_DIR._form_filter')
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-adient table-bordered table-hover table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>{{ trans('__ROUTE_CONTROLLER_NAME.model.id') }}</th>
+                                            <th>{{ trans('__ROUTE_CONTROLLER_NAME.model.name') }}</th>
+                                            <th style="width:200px;">
+                                                {{ trans('app.label.options') }}
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        @include('forms._table_tfoot_paginator', ['span' => 2])
+
+                                        <tbody class="text-vcenter">
+                                            @each('__VIEWS_DIR.index-row', $models, 'model')
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection

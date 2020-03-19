@@ -1,0 +1,64 @@
+<?php
+
+namespace __MODEL_NAMESPACE;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+use SylveK\Traits\FilterableTrait;
+
+class __MODEL_NAME extends Model
+{
+    use FilterableTrait, SoftDeletes;
+
+    // -- The database table used by the model.
+    protected $table = '__DB_TABLE';
+
+    // -- The attributes that are mass assignable.
+    protected $fillable = ['id', 'name', 'created_at', 'updated_at', 'deleted_at'];
+
+    // -- list of fields considered filterable
+    protected $filterable_fields = [
+        'name'      => 'like',
+    ];
+
+    // -- Dates
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    // -- The attributes that should be cast to native types.
+    protected $casts = [];
+
+	/*
+
+	// hasMany related model
+	public function items()
+	{
+		return $this->hasMany('issues');
+	}
+
+	// belongsTo related model
+	public function item()
+	{
+		return $this->belongsTo('issues');
+	}
+
+	*/
+
+    public function deletable($user_id = null)
+    {
+        return auth() -> check() && ! $this -> trashed();
+    }
+
+    public function restorable($user_id = null)
+    {
+        return auth() -> check() && $this -> trashed();
+    }
+
+    public function editable($user_id = null)
+    {
+        return auth() -> check();
+    }
+
+    public function viewable($user_id = null)
+    {
+        return auth() -> check();
+    }
+}
