@@ -36,6 +36,11 @@ trait RoutesCraftTrait
         return $this -> module['routes']['template'];
     }
 
+    protected function setRoutesName($name)
+    {
+        $this -> module['routes']['name'] = $name;
+    }
+
     protected function getRoutesName()
     {
         return $this -> module['routes']['name'];

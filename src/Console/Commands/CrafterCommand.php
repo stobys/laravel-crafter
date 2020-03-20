@@ -142,6 +142,9 @@ class CrafterCommand extends Command
     // -- Execute the console command.
     public function handle()
     {
+        $purge = $this -> option('purge');
+        dd($purge);
+
         $this -> initModule($this -> argument('model'));
 
         // -- compile template and make model
