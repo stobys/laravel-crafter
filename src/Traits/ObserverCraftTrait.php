@@ -9,7 +9,6 @@ trait ObserverCraftTrait
     protected function initObserverTemplate()
     {
         $this -> module['observer']['template'] = $this -> getObserverStubContent();
-        $this -> module['observer']['name'] = $this -> getModelName();
 
         $this -> makeDirectory(app_path('Observers'));
 
@@ -37,6 +36,11 @@ trait ObserverCraftTrait
     protected function getObserverTemplate()
     {
         return $this -> module['observer']['template'];
+    }
+
+    protected function setObserverName($name)
+    {
+        $this -> module['observer']['name'] = $name;
     }
 
     protected function getObserverName()

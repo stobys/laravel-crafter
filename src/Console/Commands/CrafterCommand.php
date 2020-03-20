@@ -177,10 +177,22 @@ class CrafterCommand extends Command
     {
         $models = Str::plural($model);
 
-        $this -> setModelName(Str::studly($model));
-        $this -> setControllerName(Str::studly($models));
-        $this -> setDatabaseTable(strtolower($models));
-        $this -> setViewsDir(strtolower($models));
+        $studlyModel = Str::studly($model);
+        $studlyModels = Str::studly($models);
+
+        $lowerModel = strtolower($model);
+        $lowerModels = strtolower($models);
+
+        $this -> setModelName($studlyModel);
+        $this -> setControllerName($studlyModels);
+        $this -> setDatabaseTable($lowerModels);
+        $this -> setViewsDir($lowerModels);
+
+        // -- to check and verify
+        $this -> setRoutesName($lowerModels);
+        $this -> setFormRequestName($studlyModel);
+        $this -> setLangName($lowerModels);
+        $this -> setObserverName($studlyModel);
     }
 
 
