@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Observers;
+
+use __MODEL_NAMESPACE\__MODEL_NAME;
+
+class __MODEL_NAMEObserver
+{
+    // -- Handle the model "retrieved" event.
+    public function retrieved(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "creating" event.
+    public function creating(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "created" event.
+    public function created(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "updating" event.
+    public function updating(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "updated" event.
+    public function updated(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "saving" event.
+    public function saving(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "saved" event.
+    public function saved(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "deleting" event.
+    public function deleting(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "deleted" event.
+    public function deleted(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "restoring" event.
+    public function restoring(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "restored" event.
+    public function restored(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+
+    // -- Handle the model "force deleted" event.
+    public function forceDeleted(__MODEL_NAME $_ROUTE_MODEL_NAME)
+    {
+        //
+    }
+}
