@@ -9,9 +9,9 @@ trait ObserverCraftTrait
     protected function initObserverTemplate()
     {
         $this -> module['observer']['template'] = $this -> getObserverStubContent();
-        $this -> module['observer']['name'] = strtolower($this -> getControllerName());
+        $this -> module['observer']['name'] = $this -> getModelName();
 
-        $this -> makeDirectory(base_path('routes' . DIRECTORY_SEPARATOR . 'controllers'));
+        $this -> makeDirectory(app_path('Observers'));
 
         return $this;
     }
@@ -94,7 +94,7 @@ trait ObserverCraftTrait
 
     protected function getObserverFilePath()
     {
-        return app_path('Observers'. DIRECTORY_SEPARATOR . $this -> getObserverFileName() .'.php');
+        return app_path('Observers'. DIRECTORY_SEPARATOR . $this -> getObserverFileName() .'Observer.php');
     }
 
     protected function craftObserver()
