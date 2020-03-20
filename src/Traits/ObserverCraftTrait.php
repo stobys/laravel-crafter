@@ -25,7 +25,7 @@ trait ObserverCraftTrait
                 -> craftObserver();
 
         $command = $this -> getModelName() .'::observe('. $this -> getModelName() .'Observer::class)';
-        $this -> warning('Please remember to add `'. $command .'` to AppServiceProvider@boot method');
+        $this -> comment('    Please remember to add `'. $command .'` to AppServiceProvider@boot method');
     }
 
     // -- Gets the content of a stub

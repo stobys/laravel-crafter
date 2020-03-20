@@ -170,7 +170,7 @@ class CrafterCommand extends Command
 
         // $this -> makeEvents();
 
-        $this->info('Module "'. $this -> getModelName() .'"" crafted!');
+        $this->comment('Module "'. $this -> getModelName() .'"" crafted!');
     }
 
     protected function initModule($model)
