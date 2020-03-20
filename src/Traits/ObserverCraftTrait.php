@@ -24,7 +24,7 @@ trait ObserverCraftTrait
                 -> observerReplaceControllerName()
                 -> craftObserver();
 
-        $command = $this -> getModelName() .'::observe('. $this -> getModelName() .'Observer::class);'
+        $command = $this -> getModelName() .'::observe('. $this -> getModelName() .'Observer::class)';
         $this -> warning('Please remember to add `'. $command .'` to AppServiceProvider@boot method');
     }
 
