@@ -35,6 +35,11 @@ trait FormRequestCraftTrait
         return $this -> module['form-request']['template'];
     }
 
+    protected function setFormRequestName($name)
+    {
+        $this -> module['form-request']['name'] = $name;
+    }
+
     protected function getFormRequestName()
     {
         return $this -> module['form-request']['name'];

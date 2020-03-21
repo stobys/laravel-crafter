@@ -33,6 +33,11 @@ trait LangCraftTrait
         return $this -> module['lang']['template'];
     }
 
+    protected function setLangName($name)
+    {
+        $this -> module['lang']['name'] = $name;
+    }
+
     protected function getLangName()
     {
         return $this -> module['lang']['name'];
