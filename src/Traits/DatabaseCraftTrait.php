@@ -65,10 +65,10 @@ trait DatabaseCraftTrait
         return $this -> module['database'][$file]['template'];
     }
 
-    protected function getDatabaseName($file = 'migration')
-    {
-        return $this -> module['database'][$file]['name'];
-    }
+    // protected function getDatabaseName($file = 'migration')
+    // {
+    //     return $this -> module['database'][$file]['name'];
+    // }
 
     protected function setFactoryName($name)
     {
@@ -88,6 +88,16 @@ trait DatabaseCraftTrait
     protected function getSeederName()
     {
         return $this -> module['database']['seeder']['name'];
+    }
+
+    protected function setMigrationName($name)
+    {
+        $this -> module['database']['migration']['name'] = $name;
+    }
+
+    protected function getMigrationName()
+    {
+        return $this -> module['database']['migration']['name'];
     }
 
     // -- Replaces the __MODEL_NAMESPACE template
@@ -135,19 +145,36 @@ trait DatabaseCraftTrait
         return $this -> module['database'][$file]['name'];
     }
 
+    protected function getDatabasePath($file = 'migration')
+    {
+        switch ($file) {
+            case 'migration':
+                return database_path('migrations');
+            break;
+
+            case 'factory':
+                return database_path('factories');
+            break;
+
+            case 'seeder':
+                return database_path('seeds');
+            break;
+        }
+    }
+
     protected function getDatabaseFilePath($file = 'migration')
     {
         switch ($file) {
             case 'migration':
-                return database_path('migrations'. DIRECTORY_SEPARATOR . $this -> getDatabaseFileName($file) .'.php');
+                return $this -> getDatabasePath($file) . DIRECTORY_SEPARATOR . $this -> getMigrationName() .'.php';
             break;
 
             case 'factory':
-                return database_path('factories'. DIRECTORY_SEPARATOR . $this -> getFactoryName() .'.php');
+                return $this -> getDatabasePath($file) . DIRECTORY_SEPARATOR . $this -> getFactoryName() .'.php';
             break;
 
             case 'seeder':
-                return database_path('seeds'. DIRECTORY_SEPARATOR . $this -> getSeederName() .'.php');
+                return $this -> getDatabasePath($file) . DIRECTORY_SEPARATOR . $this -> getSeederName() .'.php';
             break;
         }
     }
@@ -163,8 +190,14 @@ trait DatabaseCraftTrait
 
     protected function uncraftDatabase()
     {
-        // fine migration file name
-        // $this -> deleteFile($this -> getDatabaseFilePath('migration'));
+        $migration = substr($this -> getMigrationName(), 18);
+        $path = $this -> getDatabasePath('migration') . DIRECTORY_SEPARATOR .'*'. $migration .'.php';
+
+        dd($path);
+        $this -> deleteFile($path);
+
+
+        $this -> deleteFile($this -> getDatabaseFilePath('migration'));
         $this -> deleteFile($this -> getDatabaseFilePath('seeder'));
         $this -> deleteFile($this -> getDatabaseFilePath('factory'));
     }
