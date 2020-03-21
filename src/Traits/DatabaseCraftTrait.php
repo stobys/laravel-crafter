@@ -17,7 +17,7 @@ trait DatabaseCraftTrait
             break;
 
             case 'factory':
-                $this -> module['database']['factory']['name'] = $this -> getModelName() .'Factory';
+                $this -> module['database']['factory']['name'] = $this -> getFactoryName();
                 $this -> makeDirectory(database_path('factories'));
             break;
 
@@ -68,6 +68,26 @@ trait DatabaseCraftTrait
     protected function getDatabaseName($file = 'migration')
     {
         return $this -> module['database'][$file]['name'];
+    }
+
+    protected function setFactoryName($name)
+    {
+        $this -> module['database']['factory']['name'] = $name;
+    }
+
+    protected function getFactoryName()
+    {
+        return $this -> module['database']['factory']['name'];
+    }
+
+    protected function setSeederName($name)
+    {
+        $this -> module['database']['seeder']['name'] = $name;
+    }
+
+    protected function getSeederName()
+    {
+        return $this -> module['database']['seeder']['name'];
     }
 
     // -- Replaces the __MODEL_NAMESPACE template
@@ -123,11 +143,11 @@ trait DatabaseCraftTrait
             break;
 
             case 'factory':
-                return database_path('factories'. DIRECTORY_SEPARATOR . $this -> getDatabaseFileName($file) .'.php');
+                return database_path('factories'. DIRECTORY_SEPARATOR . $this -> getFactoryName() .'.php');
             break;
 
             case 'seeder':
-                return database_path('seeds'. DIRECTORY_SEPARATOR . $this -> getDatabaseFileName($file) .'.php');
+                return database_path('seeds'. DIRECTORY_SEPARATOR . $this -> getSeederName() .'.php');
             break;
         }
     }
