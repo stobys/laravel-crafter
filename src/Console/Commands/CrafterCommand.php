@@ -192,6 +192,9 @@ class CrafterCommand extends Command
 
     protected function uncraftModuleFiles()
     {
+        $this -> comment(' > This will purge module files!');
+        return null;
+
         // -- purge model
         $this -> uncraftModel();
 
