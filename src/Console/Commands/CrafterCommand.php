@@ -40,6 +40,7 @@ class CrafterCommand extends Command
         'route-model'           => '__ROUTE_MODEL_NAME',
         'model-namespace'       => '__MODEL_NAMESPACE',
         'controller'            => '__CONTROLLER_NAME',
+        'controller-class'      => '__CONTROLLER_CLASS',
         'route-controller'      => '__ROUTE_CONTROLLER_NAME',
         'controller-namespace'  => '__CONTROLLER_NAMESPACE',
         'views-dir'             => '__VIEWS_DIR',
@@ -51,6 +52,7 @@ class CrafterCommand extends Command
         'model'         => [
             'namespace' => 'App\Models',
             'name'      => null,
+            'plural'    => null,
             'stub'      => __DIR__ .'/../../stubs/model.stub',
             'db-table'  => 'default',
             'views-dir' => 'default',
@@ -59,6 +61,7 @@ class CrafterCommand extends Command
         'controller'    => [
             'namespace' => 'App\Http\Controllers',
             'name'      => null,
+            'class'     => null,
             'stub'      => __DIR__ .'/../../stubs/controller.stub',
             'template'  => '',
         ],
@@ -228,7 +231,7 @@ class CrafterCommand extends Command
         $lowerModels = strtolower($models);
 
         $this -> setModelName($studlyModel);
-        $this -> setControllerName($studlyModels .'Controller');
+        $this -> setControllerName($studlyModels);
         $this -> setDatabaseTable($lowerModels);
         $this -> setViewsDir($lowerModels);
 

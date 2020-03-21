@@ -14,6 +14,11 @@ trait ControllerCraftTrait
         return $this -> module['controller']['name'];
     }
 
+    protected function getControllerClass()
+    {
+        return $this -> getControllerName() .'Controller';
+    }
+
     protected function initControllerTemplate()
     {
         $this -> module['controller']['template'] = $this -> getStubContent('controller');

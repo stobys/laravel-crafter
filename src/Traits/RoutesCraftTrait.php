@@ -61,13 +61,13 @@ trait RoutesCraftTrait
         $this->replaceTemplate(
             $this -> module['routes']['template'],
             $this -> getReplaceTemplate('model'),
-            $this -> module['model']['name']
+            $this -> getModelName()
         );
 
         return $this->replaceTemplate(
             $this -> module['routes']['template'],
             $this -> getReplaceTemplate('route-model'),
-            strtolower($this -> module['model']['name'])
+            strtolower($this -> getModelName())
         );
     }
 
@@ -77,13 +77,19 @@ trait RoutesCraftTrait
         $this->replaceTemplate(
             $this -> module['routes']['template'],
             $this -> getReplaceTemplate('controller'),
-            $this -> module['controller']['name']
+            $this -> getControllerName()
+        );
+
+        $this->replaceTemplate(
+            $this -> module['routes']['template'],
+            $this -> getReplaceTemplate('controller-class'),
+            $this -> getControllerClass()
         );
 
         return $this->replaceTemplate(
             $this -> module['routes']['template'],
             $this -> getReplaceTemplate('route-controller'),
-            strtolower($this -> module['controller']['name'])
+            strtolower($this -> getControllerName())
         );
     }
 

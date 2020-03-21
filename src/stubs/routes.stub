@@ -14,19 +14,20 @@ Route::bind('__ROUTE_MODEL_NAME', function($value)
 // -- ROUTING GROUP
 Route::group(['prefix' => '__ROUTE_CONTROLLER_NAME'], function() {
 
-    Route::get('/',  '__CONTROLLER_NAMEController@index') -> name('__ROUTE_CONTROLLER_NAME-index');
-    Route::post('/', '__CONTROLLER_NAMEController@index') -> name('__ROUTE_CONTROLLER_NAME-index-filter');
+    Route::get('/',  '__CONTROLLER_CLASS@index') -> name('__ROUTE_CONTROLLER_NAME-index');
+    Route::post('/', '__CONTROLLER_CLASS@index') -> name('__ROUTE_CONTROLLER_NAME-index-filter');
 
-    Route::get('/trash',  '__CONTROLLER_NAMEController@trash') -> name('__ROUTE_CONTROLLER_NAME-trash');
-    Route::post('/trash', '__CONTROLLER_NAMEController@trash') -> name('__ROUTE_CONTROLLER_NAME-trash-filter');
+    Route::get('/trash',  '__CONTROLLER_CLASS@trash') -> name('__ROUTE_CONTROLLER_NAME-trash');
+    Route::post('/trash', '__CONTROLLER_CLASS@trash') -> name('__ROUTE_CONTROLLER_NAME-trash-filter');
 
-    Route::get('/{__ROUTE_MODEL_NAME}', '__CONTROLLER_NAMEController@show') -> name('__ROUTE_CONTROLLER_NAME-show');
-    Route::get('/create', '__CONTROLLER_NAMEController@create') -> name('__ROUTE_CONTROLLER_NAME-create');
-    Route::post('/store', '__CONTROLLER_NAMEController@store') -> name('__ROUTE_CONTROLLER_NAME-store');
+    Route::get('/{__ROUTE_MODEL_NAME}', '__CONTROLLER_CLASS@show') -> name('__ROUTE_CONTROLLER_NAME-show');
+    Route::get('/create', '__CONTROLLER_CLASS@create') -> name('__ROUTE_CONTROLLER_NAME-create');
+    Route::post('/store', '__CONTROLLER_CLASS@store') -> name('__ROUTE_CONTROLLER_NAME-store');
 
-    Route::get('/{__ROUTE_MODEL_NAME}/edit', '__CONTROLLER_NAMEController@edit') -> name('__ROUTE_CONTROLLER_NAME-edit');
-    Route::patch('/{__ROUTE_MODEL_NAME}', '__CONTROLLER_NAMEController@update') -> name('__ROUTE_CONTROLLER_NAME-update');
-    Route::get('/{__ROUTE_MODEL_NAME}/delete',  '__CONTROLLER_NAMEController@delete') -> name('__ROUTE_CONTROLLER_NAME-delete');
-    Route::get('/{__ROUTE_MODEL_NAME}/restore', '__CONTROLLER_NAMEController@restore') -> name('__ROUTE_CONTROLLER_NAME-restore');
+    Route::get('/{__ROUTE_MODEL_NAME}/edit', '__CONTROLLER_CLASS@edit') -> name('__ROUTE_CONTROLLER_NAME-edit');
+    Route::patch('/{__ROUTE_MODEL_NAME}', '__CONTROLLER_CLASS@update') -> name('__ROUTE_CONTROLLER_NAME-update');
+    Route::get('/{__ROUTE_MODEL_NAME}/delete',  '__CONTROLLER_CLASS@delete') -> name('__ROUTE_CONTROLLER_NAME-delete');
+    Route::get('/{__ROUTE_MODEL_NAME}/restore', '__CONTROLLER_CLASS
+    @restore') -> name('__ROUTE_CONTROLLER_NAME-restore');
 
 });
