@@ -184,17 +184,18 @@ trait DatabaseCraftTrait
         $this -> putContentInFile(
             $this -> getDatabaseFilePath($file),
             $this -> getDatabaseTemplate($file)
-        )
-        ;
+        );
     }
 
     protected function uncraftDatabase()
     {
-        $migration = substr($this -> getMigrationName(), 18);
-        $path = $this -> getDatabasePath('migration') . DIRECTORY_SEPARATOR .'*'. $migration .'.php';
+        $path = $this -> getDatabasePath('migration')
+                    . DIRECTORY_SEPARATOR . '*'
+                    . substr($this -> getMigrationName(), 18) . '.php';
 
-        $this -> comment('migration to be deleted : '. $path);
-        $this -> deleteFile($path);
+        foreach (glob($path) as $file) {
+            $this -> deleteFile($file);
+        }
 
         $this -> deleteFile($this -> getDatabaseFilePath('seeder'));
         $this -> deleteFile($this -> getDatabaseFilePath('factory'));
