@@ -76,7 +76,7 @@ trait ControllerCraftTrait
                 . $namespacePath
                 . DIRECTORY_SEPARATOR
                 . $this -> getControllerName()
-                . 'Controller.php';
+                . '.php';
     }
 
     protected function craftController()

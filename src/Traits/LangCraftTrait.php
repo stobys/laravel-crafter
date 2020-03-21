@@ -75,15 +75,9 @@ trait LangCraftTrait
         );
     }
 
-
-    protected function getLangFileName()
-    {
-        return $this -> module['lang']['name'];
-    }
-
     protected function getLangFilePath()
     {
-        return resource_path('lang'. DIRECTORY_SEPARATOR . 'en' . DIRECTORY_SEPARATOR . $this -> getLangFileName() .'.php');
+        return resource_path('lang'. DIRECTORY_SEPARATOR . 'en' . DIRECTORY_SEPARATOR . $this -> getLangName() .'.php');
     }
 
     protected function craftLang()
