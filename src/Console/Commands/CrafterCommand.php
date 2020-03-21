@@ -185,7 +185,7 @@ class CrafterCommand extends Command
 
         // $this -> makeEvents();
 
-        $this->comment('    >> Module "'. $this -> getModelName() .'"" crafted!');
+        $this->comment('    >> Module "'. $this -> getModelName() .'" crafted!');
     }
 
     protected function uncraftModuleFiles()
