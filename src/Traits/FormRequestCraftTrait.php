@@ -83,4 +83,9 @@ trait FormRequestCraftTrait
             $this -> getFormRequestTemplate()
         );
     }
+
+    protected function uncraftFormRequest()
+    {
+        $this -> deleteFile($this -> getFormRequestFilePath());
+    }
 }

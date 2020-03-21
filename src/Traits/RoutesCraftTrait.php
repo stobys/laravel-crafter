@@ -106,4 +106,9 @@ trait RoutesCraftTrait
             $this -> getRoutesTemplate()
         );
     }
+
+    protected function uncraftRoutes()
+    {
+        $this -> deleteFile($this -> getRoutesFilePath());
+    }
 }

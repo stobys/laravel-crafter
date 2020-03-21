@@ -108,4 +108,9 @@ trait ObserverCraftTrait
             $this -> getObserverTemplate()
         );
     }
+
+    protected function uncraftObserver()
+    {
+        $this -> deleteFile($this -> getObserverFilePath());
+    }
 }

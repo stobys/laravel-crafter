@@ -101,4 +101,9 @@ trait ModelCraftTrait
     {
         $this -> putContentInFile($this -> getModelFullPath(), $this -> getModelTemplate());
     }
+
+    protected function uncraftModel()
+    {
+        $this -> deleteFile($this -> getModelFullPath());
+    }
 }

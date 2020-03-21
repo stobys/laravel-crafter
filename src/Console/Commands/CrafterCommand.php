@@ -148,6 +148,19 @@ class CrafterCommand extends Command
 
         $this -> initModule($this -> argument('model'));
 
+        switch ($purge) {
+            case true:
+                $this -> craftModuleFiles();
+            break;
+
+            case false:
+                $this -> uncraftModuleFiles();
+            break;
+        }
+    }
+
+    protected function craftModuleFiles()
+    {
         // -- compile template and make model
         $this -> compileModelTemplate();
 
@@ -174,7 +187,36 @@ class CrafterCommand extends Command
 
         // $this -> makeEvents();
 
-        $this->comment('Module "'. $this -> getModelName() .'"" crafted!');
+        $this->comment('    Module "'. $this -> getModelName() .'"" crafted!');
+    }
+
+    protected function uncraftModuleFiles()
+    {
+        // -- purge model
+        $this -> uncraftModel();
+
+        // -- purge controller
+        $this -> uncraftController();
+
+        // -- purge form request
+        $this -> uncraftFormRequest();
+
+        // -- purge routes
+        $this -> uncraftRoutes();
+
+        // -- purge lang
+        $this -> uncraftLang();
+
+        // -- purge views
+        $this -> uncraftViews();
+
+        // -- purge database files (migration, factory, seeder)
+        $this -> uncraftDatabase();
+
+        // -- purge observer class
+        $this -> uncraftObserver();
+
+        $this->comment('    Module "'. $this -> getModelName() .'"" purged!');
     }
 
     protected function initModule($model)

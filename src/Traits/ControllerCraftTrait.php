@@ -83,4 +83,9 @@ trait ControllerCraftTrait
     {
         $this -> putContentInFile($this -> getControllerFullPath(), $this -> getControllerTemplate());
     }
+
+    protected function uncraftController()
+    {
+        $this -> deleteFile($this -> getControllerFullPath());
+    }
 }

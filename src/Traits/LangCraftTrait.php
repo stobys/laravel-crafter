@@ -88,4 +88,9 @@ trait LangCraftTrait
             $this -> getLangTemplate()
         );
     }
+
+    protected function uncraftLang()
+    {
+        $this -> deleteFile($this -> getLangFilePath());
+    }
 }

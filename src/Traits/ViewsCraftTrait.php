@@ -154,4 +154,10 @@ trait ViewsCraftTrait
         )
         ;
     }
+
+    protected function uncraftViews()
+    {
+        // -- @TODO -- delete all files
+        // $this -> deleteFile($this -> getViewsFilePath($view));
+    }
 }

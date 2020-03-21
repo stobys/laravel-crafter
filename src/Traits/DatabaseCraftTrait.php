@@ -140,4 +140,9 @@ trait DatabaseCraftTrait
         )
         ;
     }
+
+    protected function uncraftDatabase($file = 'migration')
+    {
+        $this -> deleteFile($this -> getDatabaseFilePath($file));
+    }
 }
