@@ -9,7 +9,6 @@ trait RoutesCraftTrait
     protected function initRoutesTemplate()
     {
         $this -> module['routes']['template'] = $this -> getRoutesStubContent();
-        $this -> module['routes']['name'] = strtolower($this -> getControllerName());
 
         $this -> makeDirectory(base_path('routes' . DIRECTORY_SEPARATOR . 'controllers'));
 
