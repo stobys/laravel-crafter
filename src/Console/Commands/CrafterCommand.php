@@ -148,11 +148,11 @@ class CrafterCommand extends Command
         $purge = $this -> option('purge');
         switch ($purge) {
             case true:
-                $this -> craftModuleFiles();
+                $this -> uncraftModuleFiles();
             break;
 
             case false:
-                $this -> uncraftModuleFiles();
+                $this -> craftModuleFiles();
             break;
         }
     }
