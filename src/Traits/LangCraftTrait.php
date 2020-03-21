@@ -9,7 +9,6 @@ trait LangCraftTrait
     protected function initLangTemplate()
     {
         $this -> module['lang']['template'] = $this -> getLangStubContent();
-        $this -> module['lang']['name'] = strtolower($this -> getControllerName());
 
         return $this;
     }
