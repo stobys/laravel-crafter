@@ -121,9 +121,9 @@ trait ViewsCraftTrait
         ;
     }
 
+    // -- delete views folder with all the files
     protected function uncraftViews()
     {
-        // -- @TODO -- delete all files
-        // $this -> deleteFile($this -> getViewsFilePath($view));
+        $this -> deleteDirectory($this -> getViewsPath());
     }
 }

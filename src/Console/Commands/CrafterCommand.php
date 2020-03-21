@@ -269,6 +269,14 @@ class CrafterCommand extends Command
         return $path;
     }
 
+    // -- Delete directory and files inside it.
+    protected function deleteDirectory($path)
+    {
+        if (File::isDirectory($path)) {
+            File::deleteDirectory($path);
+        }
+    }
+
     // -- Gets the content of a stub
     protected function getStubContent($name)
     {
