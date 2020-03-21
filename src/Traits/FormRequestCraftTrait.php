@@ -9,7 +9,7 @@ trait FormRequestCraftTrait
     protected function initFormRequestTemplate()
     {
         $this -> module['form-request']['template'] = $this -> getFormRequestStubContent();
-        $this -> module['form-request']['name'] = $this -> getModelName() .'FormRequest';
+        $this -> module['form-request']['name'] = $this -> getFormRequestFileName();
 
         $this -> makeDirectory(app_path('Http' . DIRECTORY_SEPARATOR . 'Requests'));
 

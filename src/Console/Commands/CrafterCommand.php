@@ -197,7 +197,7 @@ class CrafterCommand extends Command
         $this -> uncraftController();
 
         // -- purge form request
-        $this -> uncraftFormRequest();
+        $this -> uncraftFormRequest(); // -- not deleting file, why?
 
         // -- purge routes
         $this -> uncraftRoutes();
@@ -209,12 +209,12 @@ class CrafterCommand extends Command
         $this -> uncraftViews();
 
         // -- purge database files (migration, factory, seeder)
-        $this -> uncraftDatabase();
+        $this -> uncraftDatabase(); // -- not deleting file, why?
 
         // -- purge observer class
         $this -> uncraftObserver();
 
-        $this->comment('    >> Module "'. $this -> getModelName() .'"" purged!');
+        $this->comment('    >> Module "'. $this -> getModelName() .'" purged!');
     }
 
     protected function initModule($model)
@@ -228,15 +228,15 @@ class CrafterCommand extends Command
         $lowerModels = strtolower($models);
 
         $this -> setModelName($studlyModel);
-        $this -> setControllerName($studlyModels);
+        $this -> setControllerName($studlyModels .'Controller');
         $this -> setDatabaseTable($lowerModels);
         $this -> setViewsDir($lowerModels);
 
         // -- to check and verify
         $this -> setRoutesName($lowerModels);
-        $this -> setFormRequestName($studlyModel);
+        $this -> setFormRequestName($studlyModel .'FormRequest');
         $this -> setLangName($lowerModels);
-        $this -> setObserverName($studlyModel);
+        $this -> setObserverName($studlyModel .'Observer');
     }
 
 
