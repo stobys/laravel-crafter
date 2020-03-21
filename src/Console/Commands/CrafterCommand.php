@@ -29,7 +29,8 @@ class CrafterCommand extends Command
 
     // -- The name and signature of the console command.
     protected $signature = 'craft:module
-                            {model : Singular module name to create}';
+                            {model : Singular module name to create}
+                            {--purge : option to delete module}';
 
     // -- The console command description.
     protected $description = 'Creates module (model, controller, views, migration, seeder, factory, etc)';
