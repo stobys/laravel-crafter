@@ -92,7 +92,7 @@ trait DatabaseCraftTrait
 
     protected function setMigrationName($name)
     {
-        $this -> module['database']['migration']['name'] = $name;
+        $this -> module['database']['migration']['name'] = date('Y_m_d_His') .'_create_'. $name .'_table';
     }
 
     protected function getMigrationName()
@@ -193,11 +193,9 @@ trait DatabaseCraftTrait
         $migration = substr($this -> getMigrationName(), 18);
         $path = $this -> getDatabasePath('migration') . DIRECTORY_SEPARATOR .'*'. $migration .'.php';
 
-        dd($path);
+        $this -> comment('migration to be deleted : '. $path);
         $this -> deleteFile($path);
 
-
-        $this -> deleteFile($this -> getDatabaseFilePath('migration'));
         $this -> deleteFile($this -> getDatabaseFilePath('seeder'));
         $this -> deleteFile($this -> getDatabaseFilePath('factory'));
     }

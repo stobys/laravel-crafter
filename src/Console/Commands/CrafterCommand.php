@@ -235,6 +235,7 @@ class CrafterCommand extends Command
         $this -> setDatabaseTable($lowerModels);
         $this -> setFactoryName($studlyModel .'Factory');
         $this -> setSeederName($studlyModels .'TableSeeder');
+        $this -> setMigrationName($lowerModels);
         $this -> setViewsDir($lowerModels);
 
         // -- to check and verify
