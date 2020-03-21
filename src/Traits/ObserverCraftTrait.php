@@ -98,7 +98,7 @@ trait ObserverCraftTrait
 
     protected function getObserverFilePath()
     {
-        return app_path('Observers'. DIRECTORY_SEPARATOR . $this -> getObserverFileName() .'Observer.php');
+        return app_path('Observers'. DIRECTORY_SEPARATOR . $this -> getObserverFileName() .'.php');
     }
 
     protected function craftObserver()
