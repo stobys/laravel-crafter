@@ -54,7 +54,7 @@ trait ControllerCraftTrait
         );
 
         return $this->replaceTemplate(
-            $this -> module['routes']['template'],
+            $this -> module['controller']['template'],
             $this -> getReplaceTemplate('controller-class'),
             $this -> getControllerClass()
         );
