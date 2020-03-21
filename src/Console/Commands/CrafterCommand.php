@@ -190,8 +190,6 @@ class CrafterCommand extends Command
 
     protected function uncraftModuleFiles()
     {
-        $this -> comment('    >> This will purge module files!');
-
         // -- purge model
         $this -> uncraftModel();
 
@@ -216,7 +214,7 @@ class CrafterCommand extends Command
         // -- purge observer class
         $this -> uncraftObserver();
 
-        $this->comment('    Module "'. $this -> getModelName() .'"" purged!');
+        $this->comment('    >> Module "'. $this -> getModelName() .'"" purged!');
     }
 
     protected function initModule($model)
