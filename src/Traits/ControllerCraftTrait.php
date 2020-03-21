@@ -47,10 +47,16 @@ trait ControllerCraftTrait
     // -- Replaces the __MODEL_NAME template
     protected function replaceControllerName()
     {
-        return $this->replaceTemplate(
+        $this->replaceTemplate(
             $this -> module['controller']['template'],
             $this -> getReplaceTemplate('controller'),
-            $this -> module['controller']['name']
+            $this -> getControllerName()
+        );
+
+        return $this->replaceTemplate(
+            $this -> module['routes']['template'],
+            $this -> getReplaceTemplate('controller-class'),
+            $this -> getControllerClass()
         );
     }
 
@@ -80,7 +86,7 @@ trait ControllerCraftTrait
                 . DIRECTORY_SEPARATOR
                 . $namespacePath
                 . DIRECTORY_SEPARATOR
-                . $this -> getControllerName()
+                . $this -> getControllerClass()
                 . '.php';
     }
 

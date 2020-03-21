@@ -27,7 +27,6 @@ Route::group(['prefix' => '__ROUTE_CONTROLLER_NAME'], function() {
     Route::get('/{__ROUTE_MODEL_NAME}/edit', '__CONTROLLER_CLASS@edit') -> name('__ROUTE_CONTROLLER_NAME-edit');
     Route::patch('/{__ROUTE_MODEL_NAME}', '__CONTROLLER_CLASS@update') -> name('__ROUTE_CONTROLLER_NAME-update');
     Route::get('/{__ROUTE_MODEL_NAME}/delete',  '__CONTROLLER_CLASS@delete') -> name('__ROUTE_CONTROLLER_NAME-delete');
-    Route::get('/{__ROUTE_MODEL_NAME}/restore', '__CONTROLLER_CLASS
-    @restore') -> name('__ROUTE_CONTROLLER_NAME-restore');
+    Route::get('/{__ROUTE_MODEL_NAME}/restore', '__CONTROLLER_CLASS@restore') -> name('__ROUTE_CONTROLLER_NAME-restore');
 
 });
