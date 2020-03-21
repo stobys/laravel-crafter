@@ -141,8 +141,11 @@ trait DatabaseCraftTrait
         ;
     }
 
-    protected function uncraftDatabase($file = 'migration')
+    protected function uncraftDatabase()
     {
-        $this -> deleteFile($this -> getDatabaseFilePath($file));
+        // fine migration file name
+        // $this -> deleteFile($this -> getDatabaseFilePath('migration'));
+        $this -> deleteFile($this -> getDatabaseFilePath('seeder'));
+        $this -> deleteFile($this -> getDatabaseFilePath('factory'));
     }
 }

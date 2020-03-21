@@ -17,47 +17,13 @@ trait ViewsCraftTrait
     {
         $this -> makeDirectory($this -> getViewsPath());
 
-        $this -> initViewTemplate('index')
-                -> viewReplaceModelName('index')
-                -> viewReplaceControllerName('index')
-                -> viewReplaceViewsDir('index')
-                -> craftView('index');
-
-        $this -> initViewTemplate('index-row')
-                -> viewReplaceModelName('index-row')
-                -> viewReplaceControllerName('index-row')
-                -> viewReplaceViewsDir('index-row')
-                -> craftView('index-row');
-
-        $this -> initViewTemplate('create')
-                -> viewReplaceModelName('create')
-                -> viewReplaceControllerName('create')
-                -> viewReplaceViewsDir('create')
-                -> craftView('create');
-
-        $this -> initViewTemplate('edit')
-                -> viewReplaceModelName('edit')
-                -> viewReplaceControllerName('edit')
-                -> viewReplaceViewsDir('edit')
-                -> craftView('edit');
-
-        $this -> initViewTemplate('create-edit')
-                -> viewReplaceModelName('create-edit')
-                -> viewReplaceControllerName('create-edit')
-                -> viewReplaceViewsDir('create-edit')
-                -> craftView('create-edit');
-
-        $this -> initViewTemplate('filter')
-                -> viewReplaceModelName('filter')
-                -> viewReplaceControllerName('filter')
-                -> viewReplaceViewsDir('filter')
-                -> craftView('filter');
-
-        $this -> initViewTemplate('show')
-                -> viewReplaceModelName('show')
-                -> viewReplaceControllerName('show')
-                -> viewReplaceViewsDir('show')
-                -> craftView('show');
+        foreach ($this -> module['views'] as $view => $data) {
+            $this -> initViewTemplate($view)
+                    -> viewReplaceModelName($view)
+                    -> viewReplaceControllerName($view)
+                    -> viewReplaceViewsDir($view)
+                    -> craftView($view);
+        }
     }
 
     protected function setViewsDir($dir)
