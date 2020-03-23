@@ -1,5 +1,5 @@
 {{ html()->form()->open() }}
-<div class="card card-warning @if ( ! session('filters.__MODEL_NAMEFiltered') ) collapsed-card @endif">
+<div class="card card-warning @if ( ! session('filters.__ROUTE_MODEL_NAMEFiltered') ) collapsed-card @endif">
     <div class="card-header">
         @include('forms._form_filter_box_header', ['module' => '__ROUTE_CONTROLLER_NAME'])
     </div><!-- /filter.card-header -->
@@ -11,7 +11,7 @@
                     {!! html()->label(trans('__ROUTE_CONTROLLER_NAME.model.name'))->for('name') !!}
 
                     <div class="input-group bg-light mb-4">
-                        {{ html() -> text('name', session('filters.__MODEL_NAME.name'))
+                        {{ html() -> text('name', session('filters.__ROUTE_MODEL_NAME.name'))
                                 -> placeholder( trans('__ROUTE_CONTROLLER_NAME.placeholder.name') )
                                 -> class('form-control')
                          }}
