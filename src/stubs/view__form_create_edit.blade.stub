@@ -1,13 +1,13 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-3">
-            <div class="form-group @if ($errors->has('name')) has-error @endif">
+            <div class="form-group">
                 <label class="control-label">
                     {{ trans('__ROUTE_CONTROLLER_NAME.model.name') }}
                 </label>
-                {{ html()->text('name')->class('form-control input-lg') }}
+                {{ html()->text('name')->class('form-control input-lg')->classIf($errors->has('name'), 'is-invalid') }}
                 @if ( $errors->has('name') )
-                    <p class="help-block">{{ $errors->first('name') }}</p>
+                    <p class="help-block text-danger">{{ $errors->first('name') }}</p>
                 @endif
             </div>
         </div>
