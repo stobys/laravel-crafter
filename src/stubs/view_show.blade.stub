@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div><!-- /.card-body -->
-                    <div class="card-footer text-center">
+                    <div class="card-footer text-center border-top">
                         @include('forms._form_buttons_footer', ['module' => '__ROUTE_CONTROLLER_NAME', 'buttons' => ['edit', 'cancel', 'cancel', 'delete', 'restore']])
                     </div>
                 </div>

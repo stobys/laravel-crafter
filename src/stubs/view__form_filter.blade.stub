@@ -28,7 +28,7 @@
 
     </div><!-- /filter.card-body -->
 
-    <div class="card-footer text-right">
+    <div class="card-footer text-right border-top">
         @include('forms._form_filter_box_footer', ['module' => '__ROUTE_CONTROLLER_NAME'])
     </div><!-- /filter.card-body -->
 </div>
